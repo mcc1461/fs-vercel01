@@ -8,10 +8,10 @@ app.get("/", (req, res) => {
     res.send("Hello from your SERVER!");
     });
 
-    app.get('/api', (req, res) => {
+    app.get('/api', async (req, res) => {
         const jsonFilePath = path.resolve('./data', 'data.json');
         try {
-            const data = fs.readFileSync(jsonFilePath, "utf8");
+            const data = await fs.readFileSync(jsonFilePath, "utf8");
             res.setHeader('Content-Type', 'application/json');
             res.send(data);
         } catch (err) {
