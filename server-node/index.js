@@ -9,9 +9,10 @@ app.get("/", (req, res) => {
     });
 
 app.get("/api", async (req, res) => {
-    const jsonFilePath = path.resolve('./data', 'data.json'); // Adjust path as necessary
+    // const jsonFilePath = path.resolve('./data', 'data.json'); 
+    const jsonFilePath = path.resolve(__dirname , 'data', 'data.json');
     try {
-        // Using await with fs.promises.readFile for asynchronous file reading
+     
         const data = await fs.readFile(jsonFilePath, "utf8");
         res.setHeader('Content-Type', 'application/json'); 
         res.status(200).send(data);
