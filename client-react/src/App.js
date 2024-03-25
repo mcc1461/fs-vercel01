@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
+import {BrowserRouter as Router, Route, Link, Routers} from 'react-router-dom';
+import UserDetails from './UserDetails';
 
 function App() {
   // State to store the fetched users array
@@ -20,17 +22,39 @@ function App() {
   }, []); // The empty array means this effect runs once on mount
 
   return (
+    <Router>
     <div className="App">
       <h1>Welcome to FRONTEND PART-I</h1>
-      {/* Display the fetched data */}
-      {users.map((user, index) => (
-        <div key={index}>
-          <p>Name: {user.name}</p>
-          <p>Age: {user.age}</p>
-          <p>City: {user.city}</p>
-        </div>
-      ))}
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/details">User Details</Link>
+          </li>
+          <li>
+            <a href="https://fs-vercel01-server.vercel.app/">Main Page </a> 
+          </li>
+          <li>
+            <a href="https://fs-vercel01-server.vercel.app/api">API</a>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+      <Route path="/" element={
+        users.map((user, index) => (
+          <div key={index}>
+            <p>Name: {user.name}</p>
+            <p>Age: {user.age}</p>
+            <p>City: {user.city}</p>
+          </div>
+        ))
+      } />
+      <Route path="/details" element={<UserDetails users={users} />} />
+      </Routes>
     </div>
+    </Router>
   );
 }
 

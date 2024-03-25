@@ -1,4 +1,55 @@
-{ "users": [ 
-    { "name": "Ali", "age": 30, "city": "İstanbul" }, 
-    { "name": "Veli", "age": 25, "city": "Ankara" }, 
-    { "name": "Ece", "age": 40, "city": "İzmir" } ] }
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "Ali",
+        "age": 30,
+        "city": "İstanbul",
+        "email": "ali@example.com",
+        "occupation": "Software Engineer",
+        "hobbies": ["coding", "chess", "hiking"],
+        "isActive": true
+      },
+      {
+        "id": 2,
+        "name": "Veli",
+        "age": 25,
+        "city": "Ankara",
+        "email": "veli@example.com",
+        "occupation": "Graphic Designer",
+        "hobbies": ["drawing", "gaming", "photography"],
+        "isActive": false
+      },
+      {
+        "id": 3,
+        "name": "Ece",
+        "age": 40,
+        "city": "İzmir",
+        "email": "ece@example.com",
+        "occupation": "Architect",
+        "hobbies": ["design", "travel", "reading"],
+        "isActive": true
+      },
+      {
+        "id": 4,
+        "name": "Mert",
+        "age": 35,
+        "city": "Bursa",
+        "email": "mert@example.com",
+        "occupation": "Doctor",
+        "hobbies": ["tennis", "cooking", "cinema"],
+        "isActive": true
+      },
+      {
+        "id": 5,
+        "name": "Zeynep",
+        "age": 28,
+        "city": "Antalya",
+        "email": "zeynep@example.com",
+        "occupation": "Teacher",
+        "hobbies": ["painting", "yoga", "blogging"],
+        "isActive": false
+      }
+    ]
+  }
+  
