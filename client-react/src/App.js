@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
-import {BrowserRouter as Router, Route, Link, Routers} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 import UserDetails from './UserDetails';
 
 function App() {
