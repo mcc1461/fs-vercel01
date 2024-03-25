@@ -8,13 +8,14 @@ function UserDetails({ users }) {
       {users.map((user, index) => (
         <div key={index}>
           <p>ID: {user.id}</p>
-          <p>Name: {user.name}</p>
+          <p>Name: <strong> {user.name} </strong> </p>
           <p>Age: {user.age}</p>
           <p>City: {user.city}</p>
           <p>Email: {user.email}</p>
           <p>Occupation: {user.occupation}</p>
           <p>Hobbies: {user.hobbies.join(', ')}</p>
           <p>IsActive: {user.isActive ? 'Yes' : 'No'}</p>
+            <hr />
         </div>
       ))}
     </div>

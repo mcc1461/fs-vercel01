@@ -1,38 +1,89 @@
+/* App.css - Further Updated for Specific Styling Requests */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
 .App {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Navbar Styles with Hover Effect and Spacing */
+nav {
+  background-color: #343a40;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav ul li {
+  display: inline;
+  margin: 0 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 5px 10px; /* Added padding for spacing */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+nav ul li a:hover {
+  background-color: #505960; /* Darker shade for hover effect */
+  border-radius: 5px; /* Rounded corners for hover effect */
 }
 
-.App-link {
-  color: #61dafb;
+/* User Details Styles with Distinct Background Colors */
+.user-detail, .UserDetails div {
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.user-detail:hover, .UserDetails div:hover {
+  transform: scale(1.02);
+}
+
+/* Assigning distinct background colors */
+.user-detail:nth-child(odd), .UserDetails div:nth-child(odd) {
+  background-color: #e9ecef;
+}
+
+.user-detail:nth-child(even), .UserDetails div:nth-child(even) {
+  background-color: #dee2e6;
+}
+
+/* Making names bold */
+.user-detail p:first-child, .UserDetails div p:first-child {
+  font-weight: bold;
+}
+
+/* Title and Link Styles */
+h1 {
+  color: #f80606;
+  text-align: center;
+}
+
+a {
+  color: #007bff;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #63fb6d;
+  text-decoration: none;
 }
