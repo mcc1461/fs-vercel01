@@ -1,5 +1,5 @@
 const express = require('express');
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 
 const app = express();
@@ -8,18 +8,18 @@ app.get("/", (req, res) => {
     res.send("Hello from your SERVER!");
     });
 
-    app.get('/api', async (req, res) => {
-        const jsonFilePath = path.resolve('./data', 'data.json');
-        try {
-            const data = await fs.readFileSync(jsonFilePath, "utf8");
-            res.setHeader('Content-Type', 'application/json');
-            res.send(data);
-        } catch (err) {
-            console.error(err);
-            res.status(500).send("An error occurred while reading the file.");
-        }
-    });
-
+app.get("/api", async (req, res) => {
+    const jsonFilePath = path.resolve('./data', 'data.json'); // Adjust path as necessary
+    try {
+        // Using await with fs.promises.readFile for asynchronous file reading
+        const data = await fs.readFile(jsonFilePath, "utf8");
+        res.setHeader('Content-Type', 'application/json'); 
+        res.status(200).send(data);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("An error occurred while reading the file.");
+    }
+});
 
 
 app.listen(8005, () => {
