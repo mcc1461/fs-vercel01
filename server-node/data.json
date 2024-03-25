@@ -1,0 +1,4 @@
+{ "users": [ 
+    { "name": "Ali", "age": 30, "city": "İstanbul" }, 
+    { "name": "Veli", "age": 25, "city": "Ankara" }, 
+    { "name": "Ece", "age": 40, "city": "İzmir" } ] }
