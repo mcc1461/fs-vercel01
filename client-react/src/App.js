@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Welcome to FRONTEND PART II</h1>
+      <h1>Welcome to FRONTEND PART-I</h1>
       {/* Display the fetched data */}
       {users.map((user, index) => (
         <div key={index}>
