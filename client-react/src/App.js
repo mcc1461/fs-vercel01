@@ -8,7 +8,7 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('https://backend-kappa-lilac-24.vercel.app/users')
+    axios.get('https://backend-kappa-lilac-24.vercel.app/api')
       .then(response => {
         console.log('Data fetched:', response.data);
         setUsers(response.data.users);
