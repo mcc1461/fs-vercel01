@@ -41,18 +41,18 @@ app.get("/api", async (req, res) => {
 });
 
 // MONGO DB PART
-app.get("/getUsers", async (req, res) => {
-    try {
-        const users = await UserModel.find();
-        res.json(users);
-    } catch (err) {
-        res.status(500).send('Error fetching users');
-    }
-});
+// app.get("/users", async (req, res) => {
+//     try {
+//         const users = await UserModel.find();
+//         res.json(users);
+//     } catch (err) {
+//         res.status(500).send('Error fetching users');
+//     }
+// });
 
 const userController = require('./controllers/user');
-app.get("/getUsers", userController.list);
-app.get("/getUser/:id", userController.read);
+app.get("/users", userController.list);
+app.get("/users", userController.read);
 
 
 app.listen(8005, () => {
