@@ -82,6 +82,9 @@ a {
   color: #007bff;
   transition: color 0.2s ease-in-out;
 }
+.name {
+  color: blueviolet;
+}
 
 a:hover {
   color: #63fb6d;
