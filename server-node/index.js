@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api", async (req, res) => {
-    // const jsonFilePath = path.resolve('./data', 'data.json'); 
+    // const jsonFilePath = path.resolve('./data', 'data.json');  //! __dirname is required !!
     const jsonFilePath = path.resolve(__dirname , 'data', 'data.json');
     try {
         
@@ -54,9 +54,10 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-const UserModel = mongoose.model('User', UserSchema);
+const UserModel = mongoose.model('User', UserSchema); // ~ Without MVC
 mongoose.connect('mongodb+srv://mcc:Mongo1461@mern01.6ujwote.mongodb.net/merndb', { });
 
+// ~ Without MVC
 app.all("/users", async (req, res) => {
     try {
         const users = await UserModel.find();
@@ -66,8 +67,20 @@ app.all("/users", async (req, res) => {
     }
 });
 
+app.all("/users2", async (req, res) => {
+    try {
+        // await kullanarak sonucu direkt olarak alıyoruz.
+        const users = await UserModel.find().where('age').gt(34);
+        res.json(users);
+    } catch (err) {
+        console.error(err); // Hatanın konsolda görünmesini sağlayabiliriz.
+        res.status(500).send('Error fetching users');
+    }
+});
 
-// * MVC CONNECTED PART
+
+
+// // * MVC CONNECTED PART
 // const userController = require('./controllers/user');
 // app.get("/users", userController.list);
 // app.get("/users", userController.read);
