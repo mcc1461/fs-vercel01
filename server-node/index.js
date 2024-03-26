@@ -1,9 +1,7 @@
 const express = require('express');
 
 const mongoose = require('mongoose');
-const UserModel = require('./models/user');
-mongoose.connect('mongodb+srv://mcc:Mongo1461@mern01.6ujwote.mongodb.net/merndb', { });
-
+// const UserModel = require('./models/user');   // *  MVC CONNECTED PART   
 
 const fs = require('fs').promises;
 const path = require('path');
@@ -21,13 +19,13 @@ app.use(express.json());
 //WITHOUT DB PART
 app.get("/", (req, res) => {
     res.send("Hello from your SERVER!");
-    });
+});
 
 app.get("/api", async (req, res) => {
     // const jsonFilePath = path.resolve('./data', 'data.json'); 
     const jsonFilePath = path.resolve(__dirname , 'data', 'data.json');
     try {
-     
+        
         const data = await fs.readFile(jsonFilePath, "utf8");
         // const stats = await fs.stat(jsonFilePath);
         // console.log(stats);
@@ -41,18 +39,38 @@ app.get("/api", async (req, res) => {
 });
 
 // MONGO DB PART
-// app.get("/users", async (req, res) => {
-//     try {
-//         const users = await UserModel.find();
-//         res.json(users);
-//     } catch (err) {
-//         res.status(500).send('Error fetching users');
-//     }
-// });
+const UserSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: Number,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
+    }
+});
 
-const userController = require('./controllers/user');
-app.get("/users", userController.list);
-app.get("/users", userController.read);
+const UserModel = mongoose.model('User', UserSchema);
+mongoose.connect('mongodb+srv://mcc:Mongo1461@mern01.6ujwote.mongodb.net/merndb', { });
+
+app.all("/users", async (req, res) => {
+    try {
+        const users = await UserModel.find();
+        res.json(users);
+    } catch (err) {
+        res.status(500).send('Error fetching users');
+    }
+});
+
+
+// * MVC CONNECTED PART
+// const userController = require('./controllers/user');
+// app.get("/users", userController.list);
+// app.get("/users", userController.read);
 
 
 app.listen(8005, () => {

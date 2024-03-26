@@ -9,6 +9,7 @@ function App() {
 
   useEffect(() => {
     axios.get('https://fs-vercel01-server.vercel.app/api')
+    // axios.get('https://backend-kappa-lilac-24.vercel.app/api')
       .then(response => {
         console.log('Data fetched:', response.data);
         setUsers(response.data.users);
@@ -45,10 +46,10 @@ function App() {
               <Link to="/details">Frontend Part-II</Link>
             </li>
             <li>
-              <a href="https://fs-vercel01-server.vercel.app/">Main Server Page</a>
+              <a href="https://backend-kappa-lilac-24.vercel.app/">Main Server Page</a>
             </li>
             <li>
-              <a href="https://fs-vercel01-server.vercel.app/api">Server API Page</a>
+              <a href="https://backend-kappa-lilac-24.vercel.app/api">Server API Page</a>
             </li>
           </ul>
         </nav>
