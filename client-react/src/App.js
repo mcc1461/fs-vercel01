@@ -24,7 +24,7 @@ function App() {
       <h1>Welcome to FRONTEND PART-I</h1>
       {users.map((user, index) => (
         <div key={index}>
-          <p className='name'>Name: <strong> {user.name} </strong></p>
+          <p className='name'>Name: <strong> <div style="color: blue"> {user.name} </div>  </strong></p>
           <p>Age: {user.age}</p>
           <p>City: {user.city}</p>
           <hr />
