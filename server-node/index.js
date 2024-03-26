@@ -1,4 +1,10 @@
 const express = require('express');
+
+const mongoose = require('mongoose');
+const UserModel = require('./models/user');
+mongoose.connect('mongodb+srv://mcc:Mongo1461@mern01.6ujwote.mongodb.net/merndb', { });
+
+
 const fs = require('fs').promises;
 const path = require('path');
 const cors = require('cors');
@@ -7,6 +13,12 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
+app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+
+
+//WITHOUT DB PART
 app.get("/", (req, res) => {
     res.send("Hello from your SERVER!");
     });
@@ -17,6 +29,9 @@ app.get("/api", async (req, res) => {
     try {
      
         const data = await fs.readFile(jsonFilePath, "utf8");
+        // const stats = await fs.stat(jsonFilePath);
+        // console.log(stats);
+        // console.log(data);
         res.setHeader('Content-Type', 'application/json'); 
         res.status(200).send(data);
     } catch (err) {
@@ -24,6 +39,20 @@ app.get("/api", async (req, res) => {
         res.status(500).send("An error occurred while reading the file.");
     }
 });
+
+// MONGO DB PART
+app.get("/getUsers2", async (req, res) => {
+    try {
+        const users = await UserModel.find();
+        res.json(users);
+    } catch (err) {
+        res.status(500).send('Error fetching users');
+    }
+});
+
+const userController = require('./controllers/user');
+app.get("/getUsers", userController.list);
+app.get("/getUser/:id", userController.read);
 
 
 app.listen(8005, () => {
