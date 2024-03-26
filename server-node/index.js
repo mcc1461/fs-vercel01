@@ -41,7 +41,7 @@ app.get("/api", async (req, res) => {
 });
 
 // MONGO DB PART
-app.get("/getUsers2", async (req, res) => {
+app.get("/getUsers", async (req, res) => {
     try {
         const users = await UserModel.find();
         res.json(users);
