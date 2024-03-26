@@ -8,7 +8,7 @@ function UserDetails({ users }) {
       {users.map((user, index) => (
         <div key={index}>
           <p>ID: {user.id}</p>
-          <p>Name: <strong> {user.name} </strong> </p>
+          <p>Name: <strong> <span style={{color:"blue"}}> {user.name} </span>  </strong> </p>
           <p>Age: {user.age}</p>
           <p>City: {user.city}</p>
           <p>Email: {user.email}</p>
